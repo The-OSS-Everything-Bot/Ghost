@@ -58,10 +58,6 @@ WORKDIR $WORKDIR
 
 COPY ../../ .
 
-RUN yarn install --frozen-lockfile --prefer-offline --cache-folder $YARN_CACHE_FOLDER && \
-    cp -r .yarncache .yarncachecopy && \
-    rm -Rf .yarncachecopy/.tmp && \
-    yarn cache clean
 
 ENTRYPOINT ["./.devcontainer/.docker/development.entrypoint.sh"]
 CMD ["yarn", "dev"]
