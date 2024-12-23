@@ -11,7 +11,6 @@ RUN apt-get update && \
         libjemalloc2 \
         python3 \
         tar \
-        node \
         pnpm
 
 # Base DevContainer: for use in a Dev Container where your local code is mounted into the container
