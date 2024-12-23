@@ -10,8 +10,7 @@ RUN apt-get update && \
         jq \
         libjemalloc2 \
         python3 \
-        tar \
-        pnpm
+        tar
 
 # Base DevContainer: for use in a Dev Container where your local code is mounted into the container
 ### Adding code and installing dependencies gets overridden by your local code/dependencies, so this is done in onCreateCommand
