@@ -10,7 +10,9 @@ RUN apt-get update && \
         jq \
         libjemalloc2 \
         python3 \
-        tar
+        tar \
+        node \
+        pnpm
 
 # Base DevContainer: for use in a Dev Container where your local code is mounted into the container
 ### Adding code and installing dependencies gets overridden by your local code/dependencies, so this is done in onCreateCommand
@@ -24,6 +26,8 @@ RUN curl -s https://packages.stripe.dev/api/security/keypair/stripe-cli-gpg/publ
         stripe \
         zsh \
         procps \
+        redis \
+        prostgresql \
         default-mysql-client && \
     npx -y playwright@1.46.1 install --with-deps
 
@@ -49,7 +53,7 @@ EXPOSE 7174
 FROM base-devcontainer AS full-devcontainer
 WORKDIR $WORKDIR
 COPY ../../ .
-RUN yarn install --frozen-lockfile --prefer-offline --cache-folder $YARN_CACHE_FOLDER
+RUN pnpm install
 
 # Development Stage: alternative entrypoint for development with some caching optimizations
 FROM base-devcontainer AS development
